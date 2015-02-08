@@ -17,7 +17,7 @@
 !
 !         The other variables are actually constants, and are
 !         defined in the data statement.
-!
+!http://www.personal.psu.edu/jhm/f90/statements/cycle.html
 !https://gcc.gnu.org/onlinedocs/gcc-3.4.6/g77/CYCLE-and-EXIT.html
 !
       integer, dimension(40) :: inputHier, operatorHier
@@ -85,13 +85,18 @@
 !     
 !     Set inputHier(m) to xero, then change it if the character is an operator
 
-      inputHier(m) = 0
-      
+!       inputHier(m) = 0
+
       do m = 1, len, 1
-        if(input(m) == lparen) inputHier(m) = 1
-        if(input(m) == rparen) inputHier(m) = 2
-        if(input(m) == plus .or. input(m) == minus) inputHier(m) = 3
-        if(input(m) == astrsk .or. input(m) == slash) inputHier(m) = 4
+        if(input(m) == lparen) then
+          inputHier(m) = 1
+        else if(input(m) == rparen) then
+          inputHier(m) = 2
+        else if(input(m) == plus .or. input(m) == minus) then
+          inputHier(m) = 3
+        else if(input(m) == astrsk .or. input(m) == slash) then 
+          inputHier(m) = 4
+        end if
       end do
 
       do index = 1, len, 1
@@ -101,16 +106,17 @@
 !     If input-string pointer = 1 on exit from do, input was blank
 
 ! 60  write(*,*) 'Input was a blank. The program will now end'
-!  60   if(m == 1) stop
+  60   if(m == 1) stop
 
-      i = 1
       k = 1
       j = 2
-      operatorHier = -1
+      operatorHier(1) = -1
 
       do i = 1, len
         if(inputHier(i) == 0)then
           polish(k) = input(i)
+          write(*,*)'1st if polish and input', polish(k), input(i)
+          write(*,*)'Polish ', polish
           k = k + 1
 
         else if(inputHier(i) == 2)then
@@ -118,17 +124,23 @@
 
         else
           operatorStack(j) = input(i)
+          operatorHier(j) = inputHier(i)
           j = j + 1
+          cycle
         end if
+
+        do while (operatorHier(j-1) >= inputHier(i + 1))
+          polish(k) = operatorStack(j-1)
+          j = j - 1
+          k = k + 1
+        end do
+        
+
       end do
 
-      do while (operatorHier(j-1) >= inputHier(i))
-        polish(k) = operatorStack(j-1)
-        j = j - 1
-        k = k + 1
-      end do
 
-      if()
-
+      write(*,*)'OpSt', operatorStack
+      write(*,*)'OpHier', operatorHier
       write(*,*)'Polish ', polish
+      write(*,*)'Input', input
       end program translator
