@@ -5,22 +5,23 @@
 !     The variable names and their meanings are as follows:
 !         input    The input string, in normal algebraic form
 !         inputHier     Array containing the hierarchy numbers of the input
-!         inputOperators    'operator stack': The operators from the input
+!         operatorStack    'operator stack': The operators from the input
 !         operatorHier     Array containing the hierarchy numbers of the operators
 !         polish    The ouput string, in polsih notation
 !
 !         l         Do index used in initializing
 !         m         Do index used in setting up inputHier array
 !         i      Pointer to index string (input and inputHier)
-!         j      Pointer to operator stack (inputOperators and operatorHier)
+!         j      Pointer to operator stack (operatorStack and operatorHier)
 !         k      Pointer to output string (polish)
 !
 !         The other variables are actually constants, and are
 !         defined in the data statement.
 !
+!https://gcc.gnu.org/onlinedocs/gcc-3.4.6/g77/CYCLE-and-EXIT.html
 !
       integer, dimension(40) :: inputHier, operatorHier
-      character, dimension(40) :: inputOperators, polish, input
+      character, dimension(40) :: operatorStack, polish, input
       character :: blank, lparen, rparen, plus, minus, astrsk, slash
       integer :: n,len,index,i,j,k
 
@@ -43,7 +44,7 @@
   10  do i = 1, n
         inputHier = 0.
         operatorHier = 0.
-        inputOperators = blank
+        operatorStack = blank
         polish = blank
   20  end do
 
@@ -104,15 +105,30 @@
 
       i = 1
       k = 1
+      j = 2
       operatorHier = -1
 
       do i = 1, len
         if(inputHier(i) == 0)then
           polish(k) = input(i)
           k = k + 1
-        end if
 
+        else if(inputHier(i) == 2)then
+          j = j - 1
+
+        else
+          operatorStack(j) = input(i)
+          j = j + 1
+        end if
       end do
+
+      do while (operatorHier(j-1) >= inputHier(i))
+        polish(k) = operatorStack(j-1)
+        j = j - 1
+        k = k + 1
+      end do
+
+      if()
 
       write(*,*)'Polish ', polish
       end program translator
