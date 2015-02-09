@@ -9,17 +9,16 @@
 !         operatorHier     Array containing the hierarchy numbers of the operators
 !         polish    The ouput string, in polsih notation
 !
-!         l         Do index used in initializing
-!         m         Do index used in setting up inputHier array
-!         i      Pointer to index string (input and inputHier)
-!         j      Pointer to operator stack (operatorStack and operatorHier)
-!         k      Pointer to output string (polish)
-!
-!         The other variables are actually constants, and are
-!         defined in the data statement.
+!         i      Integer used as array index (input and inputHier)
+!         j      Integer used as array index (operatorStack and operatorHier)
+!         k      Integer used as array index to output translation (polish)
+!         len    The length of the string the user inputs
+!         index  Used for finding the length of the input and finding operators
+
 !http://www.personal.psu.edu/jhm/f90/statements/cycle.html
 !https://gcc.gnu.org/onlinedocs/gcc-3.4.6/g77/CYCLE-and-EXIT.html
-!
+
+
       integer, dimension(40) :: inputHier, operatorHier
       character, dimension(40) :: operatorStack, polish, input
       character :: blank, lparen, rparen, plus, minus, astrsk, slash
@@ -32,49 +31,38 @@
       minus = '-'
       astrsk = '*'
       slash = '/'
-      n = 40
       index = 0
-      len = 0
       i = 0
       j = 0
       k = 0
-!
-!     Initialize arrays to zero or blank, as appropiate
 
-  10  do i = 1, n
+!     Main loop for the whole program
+      do
+
+!     Initialize arrays to zero or blank, as appropiate        
         inputHier = 0.
         operatorHier = 0.
         operatorStack = blank
         polish = blank
-  20  end do
+        len = 0
 
-  !
-  !   read a 'data' card
-      
-      write(*,*) 'Please enter input to be translated to RPN: '
-      read(*, 30) input
-  30  format(40A)
+!     Prompt the user to enter the input that should be translated    
+        write(*,*) 'Please enter input to be translated to RPN: '
+        read(*, 30) input
+  30    format(40A)
 
-!     write(*,*) 'Output: ', input(1)
+!     If they did not enter anything or just spaces then exit the program
+        if(input(1) == blank) then
+          exit
+        end if
 
 !     Get the length of the array entered
-      do index = 1, n, 1
-        if(input(index) == blank)then
-!           write(*,*)'Found at ', index, len
-            exit
-            end if
-        len = len + 1
-      end do
-      
-!
-!     In the following do-loop, m points to input columns, from left to right
-!     First blank signals end of string (Embedded blanks are not allowed)
-!     It is assumed that if a character is not an operator or a
-!     parenthesis, it is a variable.
-
- !     do m = 1, 40
-  !      if(input(m) == blank)  go to 60
-  !    end do
+        do index = 1, 40, 1
+          if(input(index) == blank .and. index > 1)then
+              exit
+              end if
+          len = len + 1
+        end do
 
 !
 !     ( 1
@@ -83,64 +71,55 @@
 !     * / 4
 !     In absence of () * / before + -
 !     
-!     Set inputHier(m) to xero, then change it if the character is an operator
+!     If there is an operator, put the hierarchy value into inputHier
 
-!       inputHier(m) = 0
-
-      do m = 1, len, 1
-        if(input(m) == lparen) then
-          inputHier(m) = 1
-        else if(input(m) == rparen) then
-          inputHier(m) = 2
-        else if(input(m) == plus .or. input(m) == minus) then
-          inputHier(m) = 3
-        else if(input(m) == astrsk .or. input(m) == slash) then 
-          inputHier(m) = 4
-        end if
-      end do
-
-      do index = 1, len, 1
-        write(*,*) 'Hierachy of Input ', inputHier(index)
-      end do
-!
-!     If input-string pointer = 1 on exit from do, input was blank
-
-! 60  write(*,*) 'Input was a blank. The program will now end'
-  60   if(m == 1) stop
-
-      k = 1
-      j = 2
-      operatorHier(1) = -1
-
-      do i = 1, len
-        if(inputHier(i) == 0)then
-          polish(k) = input(i)
-          write(*,*)'1st if polish and input', polish(k), input(i)
-          write(*,*)'Polish ', polish
-          k = k + 1
-
-        else if(inputHier(i) == 2)then
-          j = j - 1
-
-        else
-          operatorStack(j) = input(i)
-          operatorHier(j) = inputHier(i)
-          j = j + 1
-          cycle
-        end if
-
-        do while (operatorHier(j-1) >= inputHier(i + 1))
-          polish(k) = operatorStack(j-1)
-          j = j - 1
-          k = k + 1
+        do index = 1, len, 1
+          if(input(index) == lparen) then
+            inputHier(index) = 1
+          else if(input(index) == rparen) then
+            inputHier(index) = 2
+          else if(input(index) == plus .or. input(m) == minus) then
+            inputHier(index) = 3
+          else if(input(index) == astrsk .or. input(m) == slash) then 
+            inputHier(index) = 4
+          end if
         end do
-        
+
+!       Initialize the array indicies and make operatorHier(1) -1
+!          so it is not >= inputHier at the first loop
+        k = 1
+        j = 2
+        operatorHier(1) = -1
+
+        do i = 1, len
+!     If it is an operator, put it into the final polish translation array
+          if(inputHier(i) == 0)then
+            polish(k) = input(i)
+            k = k + 1
+
+!     If it is a right parenthesis, then decrement the index for the operators
+          else if(inputHier(i) == 2)then
+            j = j - 1
+
+!     If it is a +,-,*,/ then put it into the operatorStack and the hierarcy in
+!       operatorHier
+          else
+            operatorStack(j) = input(i)
+            operatorHier(j) = inputHier(i)
+            j = j + 1
+            cycle
+          end if
+
+!     remove the operators and put it with the polish output
+          do while (operatorHier(j-1) >= inputHier(i + 1))
+            polish(k) = operatorStack(j-1)
+            j = j - 1
+            k = k + 1
+          end do
+        end do
+
+      write(*,*)'Original Input:  ', input
+      write(*,*)'RPN Translation: ', polish
 
       end do
-
-
-      write(*,*)'OpSt', operatorStack
-      write(*,*)'OpHier', operatorHier
-      write(*,*)'Polish ', polish
-      write(*,*)'Input', input
       end program translator
