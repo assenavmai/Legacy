@@ -1,0 +1,49 @@
+ Please enter input to be translated to RPN: 
+ Length            7           0
+ Original Input:  A*(B+C)                                 
+ RPN Translation: ABC+*                                   
+ Please enter input to be translated to RPN: 
+ Length            7           8
+ Original Input:  (A+B)*C                                 
+ RPN Translation: AB+C*                                   
+ Please enter input to be translated to RPN: 
+ Length            7           8
+ Original Input:  A+B*C+D                                 
+ RPN Translation: ABC*+D+                                 
+ Please enter input to be translated to RPN: 
+ Length           11           8
+ Original Input:  (A+B)*(C+D)                             
+ RPN Translation: AB+CD+*                                 
+ Please enter input to be translated to RPN: 
+ Length            5          12
+ Original Input:  A-B/C                                   
+ RPN Translation: ABC/-                                   
+ Please enter input to be translated to RPN: 
+ Length            7           6
+ Original Input:  (A-B)/C                                 
+ RPN Translation: AB-C/                                   
+ Please enter input to be translated to RPN: 
+ Length            5           8
+ Original Input:  A/B+C                                   
+ RPN Translation: AB/C+                                   
+ Please enter input to be translated to RPN: 
+ Length            9           6
+ Original Input:  A/(B+C+D)                               
+ RPN Translation: ABC+D+/                                 
+ Please enter input to be translated to RPN: 
+ Length            5          10
+ Original Input:  A/B/C                                   
+ RPN Translation: AB/C/                                   
+ Please enter input to be translated to RPN: 
+ Length            7           6
+ Original Input:  (A/B)/C                                 
+ RPN Translation: AB/C/                                   
+ Please enter input to be translated to RPN: 
+ Length            7           8
+ Original Input:  A*B-C+D                                 
+ RPN Translation: AB*C-D+                                 
+ Please enter input to be translated to RPN: 
+ Length            9           8
+ Original Input:  A*B-(C+D)                               
+ RPN Translation: AB*CD+-                                 
+ Please enter input to be translated to RPN: 

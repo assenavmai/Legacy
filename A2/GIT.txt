@@ -1,0 +1,15 @@
+echo "# OS" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/assenavmai/OS.git
+git push -u origin master
+
+/*Make new repository on command line*/
+
+
+
+git remote add origin https://github.com/assenavmai/OS.git
+git push -u origin master
+
+/*push existing repository*/

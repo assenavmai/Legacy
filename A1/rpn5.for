@@ -15,10 +15,6 @@
 !         len    The length of the string the user inputs
 !         index  Used for finding the length of the input and finding operators
 
-!http://www.personal.psu.edu/jhm/f90/statements/cycle.html
-!https://gcc.gnu.org/onlinedocs/gcc-3.4.6/g77/CYCLE-and-EXIT.html
-
-
       integer, dimension(40) :: inputHier, operatorHier
       character, dimension(40) :: operatorStack, polish, input
       character :: blank, lparen, rparen, plus, minus, astrsk, slash
