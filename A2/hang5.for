@@ -29,15 +29,19 @@ C
                P(I,J) = " "
 15         CONTINUE
 16     CONTINUE
+!STUPID LINE AT BEGINNING
        DO 18 I = 1,20
            D(I) = "-"
 18     CONTINUE
+
+!LETTERS USED N IS THE LIST
        DO 20 I = 1,26
            N(I) = " "
 20     CONTINUE
        DO 25 I = 1,50
            U(I) = 0
 25     CONTINUE
+
        DO 30 I = 1,12
            P(I,1) = "X"
 30     CONTINUE
