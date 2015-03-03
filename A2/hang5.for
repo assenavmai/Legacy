@@ -29,7 +29,7 @@ C
                P(I,J) = " "
 15         CONTINUE
 16     CONTINUE
-!STUPID LINE AT BEGINNING
+
        DO 18 I = 1,20
            D(I) = "-"
 18     CONTINUE
