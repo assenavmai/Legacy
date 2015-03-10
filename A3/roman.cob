@@ -25,17 +25,15 @@ working-storage section.
 procedure division.
 
 	open input standard-input, output standard-output.
-	display "Enter Roman Numerals Please: " with no advancing
 
 	move 0 to dumb.
-	move 1 to i.
+	move '1' to letter(i)
 
-	perform until i > 10
-		accept letter(i)
-		display letter(i)
+	perform loop
+		varying i from 1 by 1
+		 until letter(i) = ' '
 	end-perform.
-
-
-*		display "Fuck me: " with no advancing
-*		accept letter(i)
-*	display letter(i)
+	loop.
+		display "Enter Roman Numerals Please: " with no advancing
+		accept letter(i)
+	end-loop
