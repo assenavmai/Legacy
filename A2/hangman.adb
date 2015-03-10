@@ -11,7 +11,7 @@ with ada.Numerics.discrete_Random;
 
 procedure Hangman is
 
-    progression, used, len, i, j, rndnum, n, correct_guess, incorrect_guesses: integer := 0;
+    progression, used, len, i, j, rndnum, correct_guess: integer := 0;
     k : integer := 1;
     tries_remaining : integer := 0;
     filestr : unbounded_string;
@@ -21,12 +21,14 @@ procedure Hangman is
     type arr is array (1..1000) of unbounded_string;
     word_progress, correct_word : string(1..15);
     letters_used : string(1..26);
-    wordarr : arr;
+    
     type rndRange is new integer range 1..200;
     package rnd is new Ada.Numerics.Discrete_Random(rndRange);
     rndGenerator : rnd.Generator;
     num : rndRange;
     ch, guess, play_again : character;
+    type BoardType is array(1..11, 1..11) of Character;
+    board : BoardType;
 
 
 -- A function that checks if the letter they entered is correct. If yes, return 1. No? Return 0.
@@ -84,109 +86,86 @@ procedure Hangman is
     end showProgress;
 
 --Procedure that draws the hangman depending on how many incorrect guesses they do
-    procedure drawMan(wrong_guesses: in integer) is
+    procedure drawMan(wrong_guesses: in integer; arr : out BoardType) is
     begin
 
         case wrong_guesses is
-            when 0 =>
-                put("   +xxxxxx+");new_line;
-                put("    |   |");new_line;
-                put("        |");new_line;
-                put("        |");new_line;
-                put("        |");new_line;
-                put("        |");new_line;
-                put("   ============");new_line;
             when 1 =>
-                put("   +xxxxxx+");new_line;
-                put("    |   |");new_line;
-                put("    o   |");new_line;
-                put("        |");new_line;
-                put("        |");new_line;
-                put("        |");new_line;
-                put("   ============");
+                arr(3,7) := 'o';
             when 2 =>
-                put("   +xxxxxx+");new_line;
-                put("    |   |");new_line;
-                put("    o   |");new_line;
-                put("    |   |");new_line;
-                put("        |");new_line;
-                put("        |");new_line;
-                put("   ============");new_line;
+                arr(3,7) := 'o';
+                arr(4,7) := '|';
             when 3 =>
-                put("   +xxxxxx+");new_line;
-                put("    |   |");new_line;
-                put("    o   |");new_line;
-                put("   /|   |");new_line;
-                put("        |");new_line;
-                put("        |");new_line;
-                put("   ============");new_line;
+                arr(3,7) := 'o';
+                arr(4,7) := '|';
+                arr(4,6) := '/';
             when 4 =>
-                put("   +xxxxxx+");new_line;
-                put("    |   |");new_line;
-                put("    o   |");new_line;
-                put("   /|\  |");new_line;
-                put("        |");new_line;
-                put("        |");new_line;
-                put("   ============");new_line;
+                arr(3,7) := 'o';
+                arr(4,7) := '|';
+                arr(4,6) := '/';
+                arr(4,8) := '\';
             when 5 =>
-                put("   +xxxxxx+");new_line;
-                put("    |   |");new_line;
-                put("    o   |");new_line;
-                put("   /|\  |");new_line;
-                put("   /    |");new_line;
-                put("        |");new_line;
-                put("   ============");new_line;
+                arr(3,7) := 'o';
+                arr(4,7) := '|';
+                arr(4,6) := '/';
+                arr(4,8) := '\';
+                arr(5,6) := '/';
             when 6 =>
-                put("   +xxxxxx+");new_line;
-                put("    |   |");new_line;
-                put("    o   |");new_line;
-                put("   /|\  |");new_line;
-                put("   /    |");new_line;
-                put("        |");new_line;
-                put("   ============");new_line;
+                arr(3,7) := 'o';
+                arr(4,7) := '|';
+                arr(4,6) := '/';
+                arr(4,8) := '\';
+                arr(5,6) := '/';
+                arr(5,8) := '\';
             when 7 =>
-                put("   +xxxxxx+");new_line;
-                put("    |   |");new_line;
-                put("    o   |");new_line;
-                put("   /|\  |");new_line;
-                put("   / \  |");new_line;
-                put("        |");new_line;
-                put("   ============");new_line;
+                arr(3,7) := 'o';
+                arr(4,7) := '|';
+                arr(4,6) := '/';
+                arr(4,8) := '\';
+                arr(5,6) := '/';
+                arr(5,8) := '\';
+                arr(4,9) := '_';
             when 8 =>
-                put("   +xxxxxx+");new_line;
-                put("    |   |");new_line;
-                put("    o   |");new_line;
-                put("   /|\_ |");new_line;
-                put("   / \  |");new_line;
-                put("        |");new_line;
-                put("   ============");new_line;
+                arr(3,7) := 'o';
+                arr(4,7) := '|';
+                arr(4,6) := '/';
+                arr(4,8) := '\';
+                arr(5,6) := '/';
+                arr(5,8) := '\';
+                arr(4,9) := '_';
+                arr(4,5) := '_';
             when 9 =>
-                put("   +xxxxxx+");new_line;
-                put("    |   |");new_line;
-                put("    o   |");new_line;
-                put("  _/|\_ |");new_line;
-                put("   / \  |");new_line;
-                put("        |");new_line;
-                put("   ============");new_line;
+                arr(3,7) := 'o';
+                arr(4,7) := '|';
+                arr(4,6) := '/';
+                arr(4,8) := '\';
+                arr(5,6) := '/';
+                arr(5,8) := '\';
+                arr(4,9) := '_';
+                arr(4,5) := '_';
+                arr(5,9) := '_';
             when 10 =>
-                put("   +xxxxxx+");new_line;
-                put("    |   |");new_line;
-                put("    o   |");new_line;
-                put("  _/|\_ |");new_line;
-                put("   / \_ |");new_line;
-                put("        |");new_line;
-                put("   ============");new_line;
-            when 11 =>
-                put("   +xxxxxx+");new_line;
-                put("    |   |");new_line;
-                put("    o   |");new_line;
-                put("  _/|\_ |");new_line;
-                put("  _/ \_ |");new_line;
-                put("        |");new_line;
-                put("   ============");new_line;
+                arr(3,7) := 'o';
+                arr(4,7) := '|';
+                arr(4,6) := '/';
+                arr(4,8) := '\';
+                arr(5,6) := '/';
+                arr(5,8) := '\';
+                arr(4,9) := '_';
+                arr(4,5) := '_';
+                arr(5,9) := '_';
+                arr(5,5) := '_';
             when others =>
                 null;
         end case;
+
+        for i in 1..9 loop
+            for j in 1..9 loop
+                put(arr(i,j));
+            end loop;
+            new_line;
+        end loop;
+
     end drawMan;
 
 
@@ -199,6 +178,26 @@ begin
         new_line;
         put("Hangman: The Game");
         new_line;
+
+        for i in 1..9 loop
+            for j in 1..9 loop
+                board(i,j) := ' ';
+            end loop;
+         end loop;
+
+        for j in 2..9 loop
+            board(1,j) := 'x';
+        end loop;
+
+        for i in 1..8 loop
+            board(i,1) := 'x';
+        end loop;
+
+        for j in 1..9 loop
+            board(9,j) := '=';
+        end loop;
+
+        board(2,7) := '|';
 
 --Generate a random number
         rnd.Reset(rndGenerator);
@@ -261,7 +260,7 @@ begin
 
 
 -- Keep looping unless the user exhausts all their tries or they filled in the word
-        while tries_remaining <= 10 and progression = 0 loop
+        while tries_remaining < 10 and progression = 0 loop
 
 -- print out what they current found in the word
             for i in 1..len loop
@@ -300,8 +299,12 @@ begin
             --If not, their tries remaining increase by one and draw the appropiate hangman part
                 else
                     tries_remaining := tries_remaining + 1;
-                    drawMan(tries_remaining);
+                    drawMan(tries_remaining, board);
                 end if;
+            else
+                new_line;
+                put("You already guessed that letter!");
+                new_line;
             end if;
 
         --Check if the word is finished
@@ -345,6 +348,7 @@ begin
 
         tries_remaining := 0;
         progression := 0;
+        k := 1;
 
     end loop;
    
