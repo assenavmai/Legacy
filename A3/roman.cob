@@ -48,7 +48,7 @@ procedure division.
 	display "Enter 'q' at anytime to quit."
 	display ""
 
-* Continue to prompt the user to enter input until they type 'q'
+*	Continue to prompt the user to enter input until they type 'q'
 	perform until letter(i) = 'q'
 
 		move 0 to prev
@@ -58,7 +58,7 @@ procedure division.
 		display "Enter roman numerals, read a (f)ile or (q)uit: " with no advancing
 		accept array-area
 
-*		Close the program if they 
+*	Close the program if they 
 		if letter(1) = 'q' then
 				display ""
 				display "You chose to quit. Goodbye."
@@ -68,7 +68,7 @@ procedure division.
 *	If the user chooses to read from a file
 		if letter(1) = 'f' then
 
-*		Prompt the user for a filename
+*	Prompt the user for a filename
 			display ""
 			display "Please enter the filename: "
 			accept filename 
@@ -86,8 +86,11 @@ procedure division.
 					move numeral to array-area
 					perform getvalue
 					display numeral
-					display "Decimal Value: " summation
-					display ""
+					
+					if invalidFlag is not = 1 then
+						display "Decimal Value: " summation
+						display ""
+					end-if
 
 					move 1 to i
 					move 0 to prev
@@ -99,14 +102,19 @@ procedure division.
 *	If the user enters a roman numeral, just get its value
 		else
 			perform getvalue
-			display "Decimal Value: " summation
-			display ""
+
+			if invalidFlag is not = 1 then
+				display "Decimal Value: " summation
+				display ""
+			end-if
+			
 		end-if		
 	end-perform
 		
 	stop run.
 
 getvalue.
+	move 0 to invalidFlag
 
 *	Keep looping until at the end of the roman numeral
 	perform until letter(i) = ' ' or invalidFlag = 1
@@ -126,13 +134,30 @@ getvalue.
 				move 500 to val
 			when 'M'
 				move 1000 to val
+			when 'i'
+				move 1 to val
+			when 'v'
+				move 5 to val
+			when 'x'
+				move 10 to val
+			when 'l'
+				move 50 to val
+			when 'c'
+				move 100 to val
+			when 'd'
+				move 500 to val
+			when 'm'
+				move 1000 to val
 			when other
 				display "Invalid Roman Numeral."
+				display ""
 				move 1 to invalidFlag
 		end-evaluate
 
 		add val to summation
 
+*	If the value of the roman numeral is greater than the previous roman numeral, then subtract the
+*		previous value from the sum
 		if val > prev then
 			compute summation = summation - 2 * prev
 		end-if
