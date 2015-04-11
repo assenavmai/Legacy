@@ -1,0 +1,89 @@
+V "GNAT Lib v4.6"
+M P W=b
+P SS ZX
+R nnvnnnnvnvnnnnnnnnnnnnnvnvnvnnnnnnnnnvnnnnnnvnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+
+U ackermannrecur%b	ackermannrecur.adb	3e6ad16b NE OO SU IL
+W ada%s			ada.ads			ada.ali
+W ada.calendar%s	a-calend.adb		a-calend.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W system.concat_3%s	s-conca3.adb		s-conca3.ali
+W system.img_int%s	s-imgint.adb		s-imgint.ali
+W system.img_lld%s	s-imglld.adb		s-imglld.ali
+
+D ackermannrecur.adb	20150410122118 fc1ddb12
+D ada.ads		20070406091342 3ffc8e18
+D a-calend.ads		20090409150019 343c83dd
+D a-except.ads		20090727140100 0c711ac9
+D a-finali.ads		20090409150019 e5e85fa4
+D a-filico.ads		20090409150019 872dc219
+D a-inteio.ads		20070406091342 f64b89a4
+D a-ioexce.ads		20091130110856 8b9de6cd
+D a-stream.ads		20090409150019 2ca4ee37
+D a-tags.ads		20101021101406 c7695348
+D a-textio.ads		20091028140912 386df5d4
+D a-tiinio.ads		20090409150019 aa04e5d6
+D a-unccon.ads		20070406091342 f9eb8f06
+D interfac.ads		20090409150019 f77d8799
+D i-cstrea.ads		20100622165701 1bd72c32
+D system.ads		20120503154647 23e1f70b
+D s-conca3.ads		20090420091404 762a026a
+D s-crtl.ads		20100617122610 ac77b159
+D s-exctab.ads		20090417131547 66e51330
+D s-ficobl.ads		20100909103250 443b9d66
+D s-finimp.ads		20090409150019 46853fe8
+D s-finroo.ads		20090409150019 dbb860c9
+D s-imgint.ads		20090409150019 02dbe0c2
+D s-imglld.ads		20090409150019 f3220969
+D s-parame.ads		20091130110856 9c5d83fa
+D s-secsta.ads		20090707124243 eea35a36
+D s-soflin.ads		20090729085153 9414c974
+D s-stache.ads		20090417130712 596fc1b4
+D s-stalib.ads		20101021102512 c4241c00
+D s-stoele.ads		20090417130712 facd7d98
+D s-stoele.adb		20100617152355 afc5dc80
+D s-stratt.ads		20100909123135 aedef97e
+D s-traent.ads		20090417130712 5221ee41
+D s-unstyp.ads		20090409150019 6ae15c76
+D s-wchcon.ads		20090417130712 bfeb2e3d
+X 1 ackermannrecur.adb
+6U11*ackermannrecur 6b11 58l5 58t19
+8P14 Proc_Access(integer) 11r35 34r22
+8i45 X{natural}
+8i61 Z{natural}
+9i9 result{integer} 46m25 52r27
+9i17 m{integer} 40m13 44r21 45r31 46r45 54r70
+9i20 n{integer} 43m13 45r29 46r47 54r72
+11V18 Time_It{duration} 11b18 11>26 11>48 11>64 21l13 21t20 54s50
+11p26 Action{8P14}
+11i48 Arg1{integer} 14r40
+11i64 Arg2{integer} 15r40
+12i17 Start_Time{3|38I9} 20r37
+13i17 Finis_Time{3|38I9} 19m17 20r24
+14i17 Func_Arg1{integer}
+15i17 Func_Arg2{integer}
+23V18 Ackermann{natural} 23b18 23>29 23>32 28s40 30s40 30s57 32l13 32t22
+. 34r37 46s35
+23i29 M{natural} 25r28 28r51 30r50 30r67
+23i32 N{natural} 26r40 27r31 30r70
+34p9 Ack_Access{8P14} 54r58
+44i13 i{integer}
+45i21 j{integer}
+X 2 ada.ads
+16K9*Ada 1|1r6 1r23 2r6 2r31 3r6 3r24 4r6 4r23 2|19e8
+X 3 a-calend.ads
+36K13*Calendar 1|3w10 3r28 3|358e17
+38I9*Time 1|12r30 13r30
+52V13*Clock{38I9} 1|12s38 19s31
+97V13*"-"{duration} 1|20s35
+X 7 a-inteio.ads
+18K13*Integer_Text_IO[12|45] 1|2w10 2r35
+X 11 a-textio.ads
+49K13*Text_IO 1|1w10 1r27 4w10 4r27 11|472e16
+167U14*New_Line 1|50s9 53s9
+243U14*Put 1|39s9 42s9 51s9 52s9
+264U14*Put_Line 1|54s9
+X 12 a-tiinio.ads
+55U14*Get 1|40s9[7|18] 43s9[7|18]
+

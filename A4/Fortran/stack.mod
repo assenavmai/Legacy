@@ -1,0 +1,52 @@
+GFORTRAN module version '6' created from stack.for on Fri Apr 10 05:33:01 2015
+MD5:643e2873c610efd8777779f8d711f7c9 -- If you edit this, you'll get what you deserve.
+
+(() () () () () () () () () () () () () () () () () () () () () () () ()
+() () ())
+
+()
+
+()
+
+()
+
+()
+
+()
+
+(2 'empty' 'stack' 'empty' 1 ((PROCEDURE UNKNOWN-INTENT MODULE-PROC DECL
+UNKNOWN 0 0 FUNCTION) (LOGICAL 4 0 0 LOGICAL ()) 3 0 (4) () 2 () () () 0
+0)
+5 'peek' 'stack' 'peek' 1 ((PROCEDURE UNKNOWN-INTENT MODULE-PROC DECL
+UNKNOWN 0 0 FUNCTION) (INTEGER 4 0 0 INTEGER ()) 6 0 (7) () 5 () () () 0
+0)
+8 'pop' 'stack' 'pop' 1 ((PROCEDURE UNKNOWN-INTENT MODULE-PROC DECL
+UNKNOWN 0 0 FUNCTION) (INTEGER 4 0 0 INTEGER ()) 9 0 (10) () 8 () () ()
+0 0)
+11 'push' 'stack' 'push' 1 ((PROCEDURE UNKNOWN-INTENT MODULE-PROC DECL
+UNKNOWN 0 0 SUBROUTINE IMPLICIT_PURE) (UNKNOWN 0 0 0 UNKNOWN ()) 12 0 (
+13 14) () 0 () () () 0 0)
+15 'stack' 'stack' 'stack' 1 ((MODULE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN 0 0) (UNKNOWN 0 0 0 UNKNOWN ()) 0 0 () () 0 () () () 0 0)
+16 'stack_var' 'stack' 'stack_var' 1 ((DERIVED UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 ALLOC_COMP) (UNKNOWN 0 0 0 UNKNOWN ())
+0 0 () () 0 ((17 'data' (INTEGER 4 0 0 INTEGER ()) (1 0 DEFERRED () ())
+(UNKNOWN-FL UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 ALLOCATABLE
+DIMENSION) UNKNOWN-ACCESS ()) (18 'size' (INTEGER 4 0 0 INTEGER ()) () (
+UNKNOWN-FL UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0)
+UNKNOWN-ACCESS (CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '0'))) PUBLIC (()
+() () ()) () 0 0 96569401)
+13 's' '' 's' 12 ((VARIABLE INOUT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DUMMY)
+(DERIVED 16 0 0 DERIVED ()) 0 0 () () 0 () () () 0 0)
+14 'e' '' 'e' 12 ((VARIABLE IN UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DUMMY) (
+INTEGER 4 0 0 INTEGER ()) 0 0 () () 0 () () () 0 0)
+10 's' '' 's' 9 ((VARIABLE INOUT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DUMMY)
+(DERIVED 16 0 0 DERIVED ()) 0 0 () () 0 () () () 0 0)
+7 's' '' 's' 6 ((VARIABLE INOUT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DUMMY)
+(DERIVED 16 0 0 DERIVED ()) 0 0 () () 0 () () () 0 0)
+4 's' '' 's' 3 ((VARIABLE INOUT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DUMMY)
+(DERIVED 16 0 0 DERIVED ()) 0 0 () () 0 () () () 0 0)
+)
+
+('empty' 0 2 'peek' 0 5 'pop' 0 8 'push' 0 11 'stack' 0 15 'stack_var' 0
+16)
