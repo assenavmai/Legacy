@@ -7,16 +7,17 @@ Instructor: Michael Wirth
 
 Consists of all 4 assignments done within the course.
 
-Assignment 1: Fortran
-
-Reverse Polish Notation Translator.
+----------------------------------------------------------
+Assignment 1: Fortran, Reverse Polish Notation Translator
+----------------------------------------------------------
 
 Need the GFortran compiler downloaded to compile code.
 Compile: gfortran filename.for
 Run: ./a.out
 
-Assignment 2: Ada
-Hangman Game.
+-----------------------------
+Assignment 2: Ada, Hangman
+-----------------------------
 
 Need the gnatmake compiler to compile the code.
 Compile: gnatmake hangman.adb
@@ -24,8 +25,9 @@ Run: ./hangman
 
 The game will begin and prompt you to guess a letter. You can load a file called dict.txt into the game and it will randomly choose a word from the file for you to guess.
 
-Assignment 3: Cobol
-Roman Numeral Converter.
+------------------------------------------------
+Assignment 3: Cobol, Roman Numeral Converter.
+------------------------------------------------
 
 Need the cobc compiler to run the code.
 Compile: cobc -x -free -Wall roman.cob
@@ -33,7 +35,9 @@ Run: ./roman
 
 It will prompt the user to enter a roman numeral that will be converted to its decimal equivalent.
 
-Assignment 4: Code Comparison
+------------------------------------------------------
+Assignment 4: Code Comparison of Ackermann Function
+------------------------------------------------------
 
 The Ackermann function implemented recursively and iteratively using a stack.
 
